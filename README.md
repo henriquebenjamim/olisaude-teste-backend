@@ -7,7 +7,7 @@ Este projeto tem como objetivo praticar com testes técnicos para back end utili
 Caso queira ver o modelo do desafio pode acessar aqui:
 
 * [Alternativa 1](https://github.com/olisaude/teste-dev-backend/tree/master)
-* [Alternativa 2]()
+* [Alternativa 2](https://github.com/henriquebenjamim/olisaude-teste-backend/tree/main/readme-oficial)
 
 # Acesso para o meu readME
 
