@@ -6,6 +6,7 @@ import com.olisaude.backenddevchallenger.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,11 +25,13 @@ public class ClientService {
 
     public Client createClient(ClientDTO data) {
         Client newClient = new Client(data);
+        newClient.setCreationDate(LocalDateTime.now());
         this.saveClient(newClient);
         return newClient;
     }
 
-    public void saveClient(Client client) {
-        this.repository.save(client);
+    public Client saveClient(Client client) {
+
+       return repository.save(client);
     }
 }
