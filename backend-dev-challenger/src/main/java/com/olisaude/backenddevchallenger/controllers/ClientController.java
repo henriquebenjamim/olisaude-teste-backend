@@ -33,63 +33,16 @@ public class ClientController {
     }
 
     @GetMapping("{id}")
-    public Client GetClientById(@PathVariable String id) throws Exception {
+    public Client GetClientById(@PathVariable Long id) throws Exception {
         return clientService.findClientById(id);
     }
 
-//    @PutMapping("{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void update(@PathVariable String id,
-//                       @RequestBody @Valid ClientDTO client) throws Exception{
-//        clientService
-//                .findClientById(id)
-//                .map
-//                .findById(id)
-//                .map(clienteExistente -> {
-//                    cliente.setId(clienteExistente.getId());
-//                    clientes.save(cliente);
-//                    return clienteExistente;
-//    }
-
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> updateClient(
-//            @PathVariable String id,
-//            @RequestBody ClientDTO updatedClientDTO
-//    ) {
-//        try {
-//            // Validate input if needed
-//            if (updatedClientDTO == null) {
-//                return ResponseEntity.badRequest().body("Request body is required.");
-//            }
-//
-//            // Check if the client with the given ID exists
-//            Client existingClient = clientService.findClientById(id);
-//
-//            if (existingClient == null) {
-//                return ResponseEntity.notFound().build();
-//            }
-//
-//            // Save the updated client (as a ClientDTO)
-//
-//            ClientDTO savedClientDTO = clientService.saveClient(updatedClientDTO);
-//
-//            // Return a successful response with the updated client (as a ClientDTO)
-//            return ResponseEntity.ok(savedClientDTO);
-//
-//        } catch (Exception e) {
-//            // Handle any exceptions that may occur during the update process
-//            e.printStackTrace(); // Log the error for debugging
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred.");
-//        }
-//    }
-
     @PutMapping("/{id}")
     public ResponseEntity<?> updateClient(
-            @PathVariable String id,
+            @PathVariable Long id,
             @RequestBody ClientDTO updatedClientDTO
     ) {
         try {
-            // Validate input if needed
             if (updatedClientDTO == null) {
                 return ResponseEntity.badRequest().body("Request body is required.");
             }
@@ -102,12 +55,17 @@ public class ClientController {
             }
 
             Client updatedClient = convertClientDTOToClient(updatedClientDTO);
+            existingClient.setName(updatedClient.getName());
+            existingClient.setBirthdayDate(updatedClient.getBirthdayDate());
+            existingClient.setSex(updatedClient.getSex());
+            existingClient.setHealthProblem(updatedClient.getHealthProblem());
+            existingClient.setUpdatedDate(LocalDateTime.now());
 
             // Save the updated client (as a ClientDTO)
-            Client savedClientDTO = clientService.saveClient(updatedClient);
+            Client savedClient = clientService.saveClient(existingClient);
 
             // Return a successful response with the updated client (as a ClientDTO)
-            return ResponseEntity.ok(savedClientDTO);
+            return ResponseEntity.ok(savedClient);
 
         } catch (Exception e) {
             // Handle any exceptions that may occur during the update process
