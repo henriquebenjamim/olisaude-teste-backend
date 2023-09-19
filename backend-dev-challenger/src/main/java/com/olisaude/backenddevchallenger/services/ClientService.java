@@ -5,6 +5,7 @@ import com.olisaude.backenddevchallenger.dtos.ClientDTO;
 import com.olisaude.backenddevchallenger.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,11 +24,11 @@ public class ClientService {
         return this.repository.findAll();
     }
 
-    public Client createClient(ClientDTO data) {
-        Client newClient = new Client(data);
-        newClient.setCreationDate(LocalDateTime.now());
-        this.saveClient(newClient);
-        return newClient;
+    @Transactional
+    public Client createClient(Client client) {
+        client.setCreationDate(LocalDateTime.now());
+        this.saveClient(client);
+        return client;
     }
 
     public Client saveClient(Client client) {

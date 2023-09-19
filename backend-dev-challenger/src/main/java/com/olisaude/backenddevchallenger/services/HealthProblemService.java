@@ -1,10 +1,13 @@
 package com.olisaude.backenddevchallenger.services;
 
+import com.olisaude.backenddevchallenger.domain.Client;
 import com.olisaude.backenddevchallenger.domain.HealthProblem;
 import com.olisaude.backenddevchallenger.dtos.HealthProblemDTO;
 import com.olisaude.backenddevchallenger.repositories.HealthProblemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class HealthProblemService {
