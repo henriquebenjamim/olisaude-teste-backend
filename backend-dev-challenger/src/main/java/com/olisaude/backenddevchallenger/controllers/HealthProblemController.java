@@ -2,13 +2,17 @@ package com.olisaude.backenddevchallenger.controllers;
 
 import com.olisaude.backenddevchallenger.domain.HealthProblem;
 import com.olisaude.backenddevchallenger.dtos.HealthProblemDTO;
+import com.olisaude.backenddevchallenger.repositories.HealthProblemRepository;
 import com.olisaude.backenddevchallenger.services.HealthProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController

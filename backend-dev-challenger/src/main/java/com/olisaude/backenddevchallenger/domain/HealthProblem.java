@@ -16,10 +16,10 @@ public class HealthProblem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public Long id;
 
     private String diseaseName;
-    private int diseaseLevel;
+    private Integer diseaseLevel;
 
     public HealthProblem(HealthProblemDTO data) {
         this.diseaseName = data.diseaseName();

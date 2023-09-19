@@ -27,7 +27,9 @@ public class Client {
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
-    private String healthProblem;
+    @ManyToOne
+    @JoinColumn(name = "health_problem_id")
+    private HealthProblem healthProblem;
 
     private LocalDateTime creationDate;
     private LocalDateTime updatedDate;
@@ -36,8 +38,5 @@ public class Client {
         this.name = data.name();
         this.birthdayDate = data.birthdayDate();
         this.sex = data.sex();
-        this.healthProblem = data.healthProblem();
     }
-
-
 }
