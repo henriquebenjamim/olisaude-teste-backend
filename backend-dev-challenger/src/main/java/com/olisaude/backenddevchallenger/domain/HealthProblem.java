@@ -18,8 +18,8 @@ public class HealthProblem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    private String diseaseName;
-    private Integer diseaseLevel;
+    public String diseaseName;
+    public Integer diseaseLevel;
 
     public HealthProblem(HealthProblemDTO data) {
         this.diseaseName = data.diseaseName();
